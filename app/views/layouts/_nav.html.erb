@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="navbar-brand">Users</div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <div class="nav-link" id="new-user">
+            <%= link_to 'New User', new_user_path, remote: true, class: "btn btn-primary" %>
+          </div>
+        </li>
+        <%= form_tag users_search_path, remote: true, class: 'form-inline' do %>
+          <div class="form-group mx-3">
+            <%= label_tag :sort_by, "Sort by: ", { class: 'mr-2'} %>
+            <%= select_tag :sort_by, options_for_select(
+                [["First name", "first_name"], ["Last name", "last_name"], ["Salary", "salary"]]
+            ), { class: 'form-control' } %>
+          </div>
+          <div class="form-group mr-3">
+            <%= label_tag :order, "Order: ", { class: 'mr-2'} %>
+            <%= select_tag :order, options_for_select(
+                ["ASC", "DESC"]
+            ), { class: 'form-control' } %>
+          </div>
+          <%= submit_tag "Apply", class: 'btn btn-primary' %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

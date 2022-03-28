@@ -1,0 +1,19 @@
+const first_name = $('.first-name-field');
+const last_name = $('.last-name-field');
+const salary = $('.salary-field');
+
+const fields = {
+    'first_name': first_name,
+    'last_name': last_name,
+    'salary': salary
+};
+
+$('.invalid-feedback').remove();
+Object.keys(fields).forEach(function (field) {
+    fields[field].removeClass('is-invalid')
+});
+
+<% @user.errors.each do |error| %>
+  fields['<%= error.attribute %>'].addClass('is-invalid');
+  fields['<%= error.attribute %>'].parent().append("<div class='invalid-feedback'><%= error.full_message %></div>");
+<% end %>

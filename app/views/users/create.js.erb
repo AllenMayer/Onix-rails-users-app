@@ -1,0 +1,8 @@
+$('#exampleModal').modal('hide');
+$('.modal-backdrop').remove();
+setTimeout(function () {
+    $('#notice').html('<%= notice %>');
+    $('#liveToast').toast('show');
+    $('#users').append('<%= j render @user %>');
+    $('#user_<%= @user.id %>').hide().fadeIn(300);
+}, 300)

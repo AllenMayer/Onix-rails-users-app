@@ -1,0 +1,5 @@
+$('.delete').bind('ajax:success', function () {
+    $(this).closest('.user-card').fadeOut();
+    $('#notice').html('<%= notice %>');
+    $('#liveToast').toast('show');
+})

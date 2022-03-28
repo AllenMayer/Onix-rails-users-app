@@ -1,0 +1,10 @@
+$('#exampleModal').modal('hide');
+$('.modal-backdrop').remove();
+setTimeout(function () {
+    $('#user_<%= @user.id %>').fadeOut(1000);
+    $('#user_<%= @user.id %>').replaceWith('<%= j render @user %>');
+    $('#user_<%= @user.id %>').hide().fadeIn(1000);
+}, 300);
+
+$('#notice').html('<%= notice %>');
+$('#liveToast').toast('show');
